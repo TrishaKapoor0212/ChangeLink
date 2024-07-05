@@ -90,9 +90,9 @@
             var indiaTimeMinutes = (minutes + 30) % 60;
     
             if (indiaTimeHours >= 12 && indiaTimeHours < 22) { // 12pm to 10pm IST
-                window.location.href = tc_urls[getRandomIndex(tc_urls)];
-            } else { // 11pm to 11am IST
                 window.location.href = lucknow_urls[getRandomIndex(lucknow_urls)];
+            } else { // 11pm to 11am IST
+                window.location.href = tc_urls[getRandomIndex(tc_urls)];
             }
         }
     
