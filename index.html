@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Redirect</title>
+</head>
+<body>
+    <script>
+        // Array of URLs to choose from
+        var lucknow_urls = [
+            "https://lucknowgames.site/register?invite_code=131A28048310",
+            "https://lucknowgames.site/register?invite_code=54B028717907",
+            "https://lucknowgames.site/register?invite_code=8BB778717875",
+            "https://lucknowgames.site/register?invite_code=8B5BC8717894",
+            "https://lucknowgames.site/register?invite_code=E52938717891",
+            "https://lucknowgames.site/register?invite_code=2E42C8717925",
+            "https://lucknowgames.site/register?invite_code=8091E8717928",
+            "https://lucknowgames.site/register?invite_code=FA4A98717903",
+            "https://lucknowgames.site/register?invite_code=633548717906",
+            "https://lucknowgames.site/register?invite_code=A8D7B8717908",
+            "https://lucknowgames.site/register?invite_code=FFE508717910",
+            "https://lucknowgames.site/register?invite_code=0F5098717914",
+            "https://lucknowgames.site/register?invite_code=131A28048310"
+        ];
+    
+        var tc_urls = [
+            "https://9987.live/",
+        ];
+    
+        // Function to get a random index from the array
+        function getRandomIndex(arr) {
+            return Math.floor(Math.random() * arr.length);
+        }
+    
+        // Function to redirect based on the current time
+        function redirectBasedOnTime() {
+            var now = new Date();
+            var hours = now.getUTCHours();
+            var minutes = now.getUTCMinutes();
+            
+            // Convert Indian time to UTC
+            var indiaTimeHours = (hours + 5 + Math.floor((minutes + 30) / 60)) % 24;
+            var indiaTimeMinutes = (minutes + 30) % 60;
+    
+            if (indiaTimeHours >= 12 && indiaTimeHours < 22) { // 12pm to 10pm IST (UTC+5.5)
+                window.location.href = lucknow_urls[getRandomIndex(lucknow_urls)];
+            } else if ((indiaTimeHours >= 23 && indiaTimeHours < 24) || (indiaTimeHours >= 0 && indiaTimeHours < 11)) { // 11pm to 11am IST (UTC+5.5)
+                window.location.href = tc_urls[getRandomIndex(tc_urls)];
+            }
+        }
+    
+        // Check the time and redirect every minute
+        setInterval(redirectBasedOnTime, 60000);
+    
+        // Initial call to redirect immediately on page load
+        redirectBasedOnTime();
+    </script>    
+</body>
+</html>
