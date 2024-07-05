@@ -26,7 +26,7 @@
         ];
     
         var tc_urls = [
-            "https://9987.live/",
+            "https://9987.live/"
         ];
     
         // Function to get a random index from the array
@@ -34,19 +34,14 @@
             return Math.floor(Math.random() * arr.length);
         }
     
-        // Function to redirect based on the current time
+        // Function to redirect based on the current minute
         function redirectBasedOnTime() {
             var now = new Date();
-            var hours = now.getUTCHours();
             var minutes = now.getUTCMinutes();
             
-            // Convert Indian time to UTC
-            var indiaTimeHours = (hours + 5 + Math.floor((minutes + 30) / 60)) % 24;
-            var indiaTimeMinutes = (minutes + 30) % 60;
-    
-            if (indiaTimeHours >= 12 && indiaTimeHours < 22) { // 12pm to 10pm IST (UTC+5.5)
+            if (minutes % 2 === 0) { // Even minutes
                 window.location.href = lucknow_urls[getRandomIndex(lucknow_urls)];
-            } else if ((indiaTimeHours >= 23 && indiaTimeHours < 24) || (indiaTimeHours >= 0 && indiaTimeHours < 11)) { // 11pm to 11am IST (UTC+5.5)
+            } else { // Odd minutes
                 window.location.href = tc_urls[getRandomIndex(tc_urls)];
             }
         }
@@ -56,6 +51,7 @@
     
         // Initial call to redirect immediately on page load
         redirectBasedOnTime();
-    </script>    
+    </script>
+    
 </body>
 </html>
